@@ -1,0 +1,92 @@
+.editor {
+  background: #ffffff;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(31, 41, 55, 0.12);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  position: sticky;
+  top: 2rem;
+  width: 100%;
+}
+
+.editor::before {
+  color: #172033;
+  content: "Create note";
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}
+
+.editor-label {
+  color: #64748b;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.editor input,
+.editor textarea {
+  background: #f8fafc;
+  border: 1px solid #dbe3ee;
+  border-radius: 8px;
+  color: #172033;
+  font-family: "Segoe UI", Arial, sans-serif;
+  outline: none;
+  padding: 0.85rem 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  width: 100%;
+}
+
+.editor input {
+  font-size: 0.98rem;
+}
+
+.editor textarea {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  min-height: 220px;
+  resize: vertical;
+}
+
+.editor input:focus,
+.editor textarea:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.editor button {
+  align-self: flex-end;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 12px 20px rgba(37, 99, 235, 0.24);
+  color: white;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.8rem 1.25rem;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.editor button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 14px 24px rgba(37, 99, 235, 0.3);
+}
+
+.editor button:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 780px) {
+  .editor {
+    position: static;
+  }
+}
