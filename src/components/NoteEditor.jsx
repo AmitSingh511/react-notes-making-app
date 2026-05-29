@@ -1,17 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./NoteEditor.css";
-export default function ({ onSave, editingNote }) {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  useEffect(() => {
-    if (editingNote) {
-      setTitle(editingNote.title);
-      setBody(editingNote.body);
-    } else {
-      setTitle("");
-      setBody("");
-    }
-  }, [editingNote]);
+export default function NoteEditor({ onSave, editingNote }) {
+  const [title, setTitle] = useState(editingNote?.title ?? "");
+  const [body, setBody] = useState(editingNote?.body ?? "");
   function handleSave() {
     if (!title && !body) return;
     onSave({
@@ -22,9 +13,6 @@ export default function ({ onSave, editingNote }) {
     });
     setTitle("");
     setBody("");
-  }
-  function handleEdit(note) {
-    setEditingNote(note);
   }
   return (
     <div className="editor">
@@ -41,7 +29,9 @@ export default function ({ onSave, editingNote }) {
         value={body}
         onChange={(e) => setBody(e.target.value)}
       ></textarea>
-      <button onClick={handleSave}>Save Note</button>
+      <button onClick={handleSave}>
+        {editingNote ? "Update Note" : "Save Note"}
+      </button>
     </div>
   );
 }

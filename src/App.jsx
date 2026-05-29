@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import NoteEditor from "./components/NoteEditor";
-export default function () {
+export default function App() {
   const [notes, setNotes] = useState(() => {
     const saved = localStorage.getItem("notes");
     return saved ? JSON.parse(saved) : [];
@@ -10,10 +10,24 @@ export default function () {
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
   function handleSave(newNote) {
-    setNotes([...notes, newNote]);
+    setNotes((currentNotes) => {
+      const noteExists = currentNotes.some((note) => note.id === newNote.id);
+
+      if (noteExists) {
+        return currentNotes.map((note) =>
+          note.id === newNote.id ? newNote : note
+        );
+      }
+
+      return [...currentNotes, newNote];
+    });
+    setEditingNote(null);
   }
   function handleDelete(id) {
     setNotes(notes.filter((note) => note.id !== id));
+    if (editingNote?.id === id) {
+      setEditingNote(null);
+    }
   }
   const [editingNote, setEditingNote] = useState(null);
   function handleEdit(note) {
@@ -29,7 +43,11 @@ export default function () {
         </p>
       </header>
       <div className="main-layout">
-        <NoteEditor onSave={handleSave} editingNote={editingNote} />
+        <NoteEditor
+          key={editingNote?.id ?? "new-note"}
+          onSave={handleSave}
+          editingNote={editingNote}
+        />
         <div className="notes-panel">
           <div className="notes-panel-header">
             <div>
