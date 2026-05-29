@@ -2,6 +2,10 @@
 
 A clean and responsive note-taking application built with React and Vite. My Notes helps users quickly capture ideas, reminders, and thoughts, then keep them available in the browser using local storage.
 
+## UI
+<img width="1920" height="961" alt="image" src="https://github.com/user-attachments/assets/38296fe0-4349-45e1-b6ce-bc25ec6828ed" />
+<img width="1920" height="973" alt="image" src="https://github.com/user-attachments/assets/324cfbeb-eeb6-48e3-883d-2486db750ce2" />
+
 ## Overview
 
 My Notes is a lightweight personal notes workspace. It provides a simple editor for writing notes and a saved notes panel where users can review, edit, and delete their entries. The app is designed for fast capture, easy scanning, and persistent browser-based storage without requiring a backend.
